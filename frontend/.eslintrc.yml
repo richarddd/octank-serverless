@@ -1,0 +1,50 @@
+extends:
+  - eslint:recommended
+  - plugin:react/recommended
+  - plugin:@typescript-eslint/eslint-recommended
+  - plugin:prettier/recommended
+plugins:
+  - react
+  - "@typescript-eslint"
+  - prettier
+  - react-hooks
+  - unused-imports
+  - simple-import-sort
+env:
+  browser: true
+  jasmine: true
+  jest: true
+parserOptions:
+  ecmaVersion: 6
+  sourceType: module
+  ecmaFeatures:
+    jsx: true
+ignorePatterns: ["*.d.ts"]
+rules:
+  no-restricted-globals: 0
+  no-use-before-define: 0
+  no-undef: 0
+  react/display-name: 0
+  react/prop-types: 0
+  react-hooks/rules-of-hooks: error
+  react-hooks/exhaustive-deps: warn
+  "prettier/prettier": warn
+  "@typescript-eslint/explicit-function-return-type": 0
+  "@typescript-eslint/no-use-before-define": 0
+  "@typescript-eslint/no-non-null-assertion": 0
+  "@typescript-eslint/prefer-interface": 0
+  "@typescript-eslint/no-explicit-any": 0
+  "@typescript-eslint/explicit-member-accessibility": 0
+  "no-unused-vars": 1
+  "simple-import-sort/imports": 1
+  unused-imports/no-unused-imports-ts: 1
+  unused-imports/no-unused-vars-ts: 1
+  #DEBUG
+  no-debugger: 1
+  no-console: 0
+  "@typescript-eslint/no-unused-vars": 0
+settings:
+  react:
+    pragma: React
+    version: detect
+parser: "@typescript-eslint/parser"
