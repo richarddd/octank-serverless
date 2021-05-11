@@ -20,6 +20,8 @@ const Header: React.FC = () => {
     value: { signedIn, signInType },
   } = useUiContext();
 
+  console.log(signInType);
+
   return (
     <AppBar position="static" color="default">
       <Toolbar className={classes.toolbar}>

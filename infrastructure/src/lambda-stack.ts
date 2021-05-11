@@ -1,6 +1,4 @@
-import * as ssm from "@aws-cdk/aws-ssm";
 import * as cdk from "@aws-cdk/core";
-import * as rds from "@aws-cdk/aws-rds";
 import * as secretsmanager from "@aws-cdk/aws-secretsmanager";
 import { StagedStackProps, toTitleCase } from "./utils";
 import * as nodelambda from "@aws-cdk/aws-lambda-nodejs";
@@ -13,7 +11,7 @@ import { execSync } from "child_process";
 import { AuthorizerType } from "./api-stack";
 import { IdentityResources } from "./identity-stack";
 
-type LambdaApi = "documents" | "admin";
+export type LambdaApi = "documents" | "admin";
 
 export type ApiLambdaFunction = {
   lambdaFunction: nodelambda.NodejsFunction;
@@ -91,6 +89,7 @@ export default class LambdaStack extends cdk.Stack {
         admin: ["admin"],
       },
       initialPolicy: {
+        //admin should allow access to cognito-idp
         admin: [
           new iam.PolicyStatement({
             effect: iam.Effect.ALLOW,
@@ -98,6 +97,7 @@ export default class LambdaStack extends cdk.Stack {
             actions: ["cognito-idp:ListUsers"],
           }),
         ],
+        //documents should allow access to objects in document bucket
         documents: [
           new iam.PolicyStatement({
             effect: iam.Effect.ALLOW,

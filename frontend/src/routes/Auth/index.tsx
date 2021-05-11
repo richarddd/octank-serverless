@@ -5,7 +5,7 @@ import { useHistory, useRouteMatch } from "react-router-dom";
 
 import DefaultContainer from "../../components/DefaultContainer";
 import ErrorView from "../../components/ErrorView";
-import { SIGN_IN_TYPE_KEY, useUiContext } from "../../contexts/UiContext";
+import { useUiContext } from "../../contexts/UiContext";
 import jwt from "../../jwt";
 import routes from "..";
 
@@ -23,7 +23,7 @@ const Auth: React.FC = () => {
 
   useEffect(() => {
     if (signInType && accessToken) {
-      localStorage.setItem(SIGN_IN_TYPE_KEY, signInType);
+      jwt.signInType = signInType;
       jwt.token = accessToken as string;
       setContext({
         signInType,
@@ -43,7 +43,6 @@ const Auth: React.FC = () => {
         username: undefined,
       });
       jwt.clear();
-      localStorage.removeItem(SIGN_IN_TYPE_KEY);
       history.replace(routes.index);
     }
   }, [history, isLogout, setContext]);

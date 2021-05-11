@@ -2,13 +2,9 @@ import React, { useCallback, useContext, useMemo, useState } from "react";
 
 import jwt from "../jwt";
 
-export const SIGN_IN_TYPE_KEY = "sign_in_type";
-
-export type SignInType = "admin" | "user";
-
 const defaultContextValue = {
   signedIn: (jwt.token && true) || false,
-  signInType: localStorage.getItem(SIGN_IN_TYPE_KEY) as SignInType | null,
+  signInType: jwt.signInType,
   username: jwt.username as string | null,
 };
 

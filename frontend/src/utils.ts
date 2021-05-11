@@ -1,4 +1,4 @@
-import { SignInType } from "./contexts/UiContext";
+import { SignInType } from "./jwt";
 
 export const getLoginLogoutUrl = (
   loggedIn: boolean,
