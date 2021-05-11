@@ -1,0 +1,11 @@
+config:
+  target: https://1dlk8cwf2k.execute-api.eu-west-1.amazonaws.com
+  phases:
+    - duration: 300
+      arrivalRate: 120
+scenarios:
+  - flow:
+      - get:
+          url: "/documents"
+          headers:
+            authorization: eyJraWQiOiJTMUhNTEd6cWpoXC84VjhjRlZEMUx2MUZlR0hjTmxaaTE1K3luQlhLdExrWT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJjNzAxNDA0My05ODg3LTQ2MmMtYTdmZi05ODRkNzg5MTZmYTUiLCJ0b2tlbl91c2UiOiJhY2Nlc3MiLCJzY29wZSI6ImF3cy5jb2duaXRvLnNpZ25pbi51c2VyLmFkbWluIG9wZW5pZCBwcm9maWxlIGVtYWlsIiwiYXV0aF90aW1lIjoxNjIwNzIzMzQxLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuZXUtd2VzdC0xLmFtYXpvbmF3cy5jb21cL2V1LXdlc3QtMV9IS1hkZ3g3YWciLCJleHAiOjE2MjA3MjY5NDEsImlhdCI6MTYyMDcyMzM0MSwidmVyc2lvbiI6MiwianRpIjoiNjdmMjZkYzMtNWU2Yy00ODhhLWE4M2YtYzkxODMwMmMyMDlhIiwiY2xpZW50X2lkIjoiN3FvY2hzYmRkc3RyaG10ZWM1NjE1c2FldGsiLCJ1c2VybmFtZSI6InJpY2hhcmRkYXZpc29uIn0.m9vumkbUZffmnnoG0-TAmUba6wznb4tZEpvpMeQGYPvofbQW7aAqUksLCSUkvMKIM0hsMUBcuY2PIDrT_HAOK-WjoB0bTVtxWZrAKoBC0kzpXk5w6_OeOVxvSk5PfLd5SEdfgw2HS9jfkZh5MZmBbgdGRTjL_v9OgwveQXpJZquIlzGAvL2MyOyymW4pyRV8Ohxj4WWQdMZiqztTRsG5rOweZ1Sg1cVTO9tDicAR_joXT-P1pg3vJUEuQU_Xtqr71-2X4YVaE69qEzZgtxjH7gMdbwlZ-Ple3Vd4oAOgiY5F5qZP4P-n-C9BqcdOIkoEsEIY4KxZPenpXRYZGneWbg

@@ -9,16 +9,19 @@
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk",
-    "predeploy": "yarn build && cdk bootstrap --profile octank",
-    "deploy:fe": "node src/deploy-frontend.js octank",
-    "deploy": "yarn cdk deploy --all --require-approval never --profile octank --outputs-file outputs.json && yarn deploy:fe",
-    "destroy": "yarn cdk destroy --all --require-approval never --profile octank"
+    "loadtest:fe": "artillery run loadtest-fe.yml",
+    "loadtest:be": "artillery run loadtest-be.yml",
+    "predeploy": "yarn build && cdk bootstrap",
+    "deploy:fe": "node src/deploy-frontend.js",
+    "deploy": "yarn cdk deploy --all --require-approval never --outputs-file outputs.json && yarn deploy:fe",
+    "destroy": "yarn cdk destroy --all --require-approval never"
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.103.0",
     "@types/jest": "26.0.23",
     "@types/mime-types": "2.1.0",
     "@types/node": "15.0.2",
+    "artillery": "^1.7.2",
     "aws-cdk": "1.103.0",
     "esbuild": "0.11.20",
     "jest": "26.6.3",

@@ -4,21 +4,20 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@types/uuid": "^8.3.0",
-    "aws-sdk": "^2.903.0",
-    "dotenv": "^8.5.1",
-    "koa": "^2.13.1",
-    "koa-bodyparser": "^4.3.0",
-    "koa-json": "^2.0.2",
-    "koa-logger": "^3.2.1",
-    "koa-router": "^10.0.0",
-    "mime-types": "^2.1.30",
-    "mysql2": "^2.2.5",
-    "serverless-http": "^2.7.0",
-    "source-map-support": "^0.5.19",
-    "typeorm": "^0.2.32",
-    "typeorm-aurora-data-api-driver": "^2.1.0",
-    "uuid": "^8.3.2"
+    "aws-sdk": "2.903.0",
+    "dotenv": "8.5.1",
+    "koa": "2.13.1",
+    "koa-bodyparser": "4.3.0",
+    "koa-json": "2.0.2",
+    "koa-logger": "3.2.1",
+    "koa-router": "10.0.0",
+    "mime-types": "2.1.30",
+    "mysql2": "2.2.5",
+    "serverless-http": "2.7.0",
+    "source-map-support": "0.5.19",
+    "typeorm": "0.2.32",
+    "typeorm-aurora-data-api-driver": "2.1.0",
+    "uuid": "8.3.2"
   },
   "scripts": {
     "esbuild": "node build.js",
@@ -26,15 +25,16 @@
     "start-watch": "tsc && tsc -w & PID=$! && kill_tsc () { kill $PID ; } && trap kill_tsc INT && node ./build/index.js"
   },
   "devDependencies": {
-    "@types/aws-lambda": "^8.10.76",
-    "@types/koa-bodyparser": "^4.3.0",
-    "@types/koa-json": "^2.0.18",
-    "@types/koa-logger": "^3.1.1",
-    "@types/koa-router": "^7.4.2",
-    "@types/mime-types": "^2.1.0",
-    "@types/node": "^15.0.2",
-    "esbuild": "^0.11.20",
-    "esbuild-plugin-import-glob": "^0.1.1",
-    "typescript": "^4.2.4"
+    "@types/uuid": "8.3.0",
+    "@types/aws-lambda": "8.10.76",
+    "@types/koa-bodyparser": "4.3.0",
+    "@types/koa-json": "2.0.18",
+    "@types/koa-logger": "3.1.1",
+    "@types/koa-router": "7.4.2",
+    "@types/mime-types": "2.1.0",
+    "@types/node": "15.0.2",
+    "esbuild": "0.11.20",
+    "esbuild-plugin-import-glob": "0.1.1",
+    "typescript": "4.2.4"
   }
 }

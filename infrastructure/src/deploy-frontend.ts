@@ -5,11 +5,13 @@ import path from "path";
 import { promisify } from "util";
 import mime from "mime-types";
 
+const cdk = require("../cdk.json");
+
 const readFileAsync = promisify(readFile);
 const readdirAsync = promisify(readdir);
 const statAsync = promisify(stat);
 
-const profile = process.argv.slice(2)[0];
+const profile = cdk.profile;
 
 if (!profile) {
   throw new Error("Missing profile!");

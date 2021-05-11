@@ -80,7 +80,7 @@ export default class DatabaseStack extends cdk.Stack {
       backupRetentionPeriod: isDev ? 1 : 30,
       scalingConfiguration: {
         autoPause: true,
-        maxCapacity: isDev ? 1 : 2,
+        maxCapacity: isDev ? 16 : 32,
         minCapacity: 1,
         secondsUntilAutoPause: isDev ? 3600 : 10800,
       },

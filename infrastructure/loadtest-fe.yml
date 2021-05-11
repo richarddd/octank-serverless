@@ -1,0 +1,9 @@
+config:
+  target: https://d3mcoyttkwmj1z.cloudfront.net
+  phases:
+    - duration: 60
+      arrivalRate: 30
+scenarios:
+  - flow:
+      - get:
+          url: /

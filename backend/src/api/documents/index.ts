@@ -78,7 +78,7 @@ export default apiGatewayHandler(__dirname, async (router) => {
 
     const document = await documentsRepo.findOneOrFail({
       id,
-      userId: userId,
+      userId,
     });
 
     const [url, previewUrl] = await Promise.all([
@@ -141,9 +141,9 @@ export default apiGatewayHandler(__dirname, async (router) => {
   router.get("/", async (ctx) => {
     const documentsRepo = connection.getRepository(Document);
 
-    const { id } = getUserOrThrow(ctx);
+    const { id: userId } = getUserOrThrow(ctx);
 
-    const documents = await documentsRepo.find({ userId: id });
+    const documents = await documentsRepo.find({ userId });
     ctx.body = documents;
   });
 });
