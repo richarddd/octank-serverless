@@ -59,12 +59,6 @@ class OctankApplication extends cdk.Stack {
       lambdaFunctions,
       identityResources,
     });
-
-    // new FrontendDepoymentStack(this, "FrontendDeploymentStack", {
-    //   stage,
-    //   serviceName,
-    //   frontendBucket,
-    // });
   }
 }
 
@@ -74,7 +68,7 @@ const app = new cdk.App();
 new OctankApplication(app, {
   env: {
     account: process.env.CDK_DEFAULT_ACCOUNT,
-    region: "eu-central-1",
+    region: process.env.CDK_DEFAULT_REGION,
   },
 });
 app.synth();

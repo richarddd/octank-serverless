@@ -16,18 +16,24 @@ export default apiGatewayHandler(__dirname, async (router) => {
   const connection = await createDatabaseConnection();
 
   router.get("/users", async (ctx) => {
-    const { id: userId } = getUserOrThrow(ctx);
+    getUserOrThrow(ctx);
 
-    const documentsRepo = connection.getRepository(Document);
+    const usersResponse = await COGNITO_CLIENT.listUsers({
+      UserPoolId: USER_POOL_USER_ID,
+    }).promise();
 
-    const [usersResponse, documentCount] = await Promise.all([
-      COGNITO_CLIENT.listUsers({
-        UserPoolId: USER_POOL_USER_ID,
-      }).promise(),
-      documentsRepo.count({
-        userId,
-      } as any),
-    ]);
+    const documentsRepository = connection.getRepository(Document);
+
+    const countData = await documentsRepository
+      .query(
+        `SELECT userId, COUNT(*) as documentCount FROM ${documentsRepository.metadata.givenTableName} GROUP BY userId`
+      )
+      .then((rows) =>
+        (rows as any[]).reduce((acc, { userId, documentCount }) => {
+          acc[userId] = parseInt(documentCount);
+          return acc;
+        }, {} as Record<string, number>)
+      );
 
     const users = (usersResponse.Users || []).map((user) => {
       const attributesByName = (user.Attributes || []).reduce(
@@ -37,16 +43,17 @@ export default apiGatewayHandler(__dirname, async (router) => {
         },
         {} as Record<string, string | undefined>
       );
+      const id = attributesByName["sub"]!;
       return {
         username: user.Username,
         createDate: user.UserCreateDate,
         updateDate: user.UserLastModifiedDate,
         name: attributesByName["name"],
         status: user.UserStatus,
-        id: attributesByName["sub"],
+        id,
         email: attributesByName["email"],
         enabled: user.Enabled,
-        documentCount,
+        documentCount: countData[id],
       };
     });
 
