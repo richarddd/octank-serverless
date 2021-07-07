@@ -143,15 +143,6 @@ export default apiGatewayHandler(__dirname, async (router) => {
 
     const { id: userId } = getUserOrThrow(ctx);
 
-    // //add more load on the database
-    // await Promise.all(
-    //   new Array(10).fill(0).map(async () => {
-    //     const doc2 = await documentsRepo.find({
-    //       userId,
-    //     });
-    //   })
-    // );
-
     const documents = await documentsRepo.find({ userId });
     ctx.body = documents;
   });

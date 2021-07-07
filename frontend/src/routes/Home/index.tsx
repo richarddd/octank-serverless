@@ -3,20 +3,14 @@ import { makeStyles, Theme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import clsx from "clsx";
 import React from "react";
+import Hero from "../../components/Hero";
 
 import heroBackground from "./hero.jpg";
 
 const Home: React.FC = () => {
-  const classes = useStyles();
   return (
-    <div className={classes.heroWrapper}>
-      <div
-        className={clsx(classes.heroBackground, classes.heroBackgroundImage)}
-      />
-      <div
-        className={clsx(classes.heroBackground, classes.heroBackgroundOverlay)}
-      />
-      <Container maxWidth="sm" component="main" className={classes.heroContent}>
+    <main>
+      <Hero background={heroBackground}>
         <Typography
           component="h1"
           variant="h2"
@@ -35,39 +29,9 @@ const Home: React.FC = () => {
           Octanks &quot;OccuDocs&quot; 2.0 Document Managment Systems is a
           completely revamped version.
         </Typography>
-      </Container>
-    </div>
+      </Hero>
+    </main>
   );
 };
-
-const useStyles = makeStyles(({ breakpoints, spacing, shape }: Theme) => ({
-  heroContent: {
-    padding: spacing(8, 0, 6),
-    position: "relative",
-    zIndex: 99,
-    "& *": {
-      color: "white",
-    },
-  },
-  heroBackgroundImage: {
-    backgroundImage: `url(${heroBackground})`,
-    backgroundSize: "cover",
-  },
-  heroBackground: {
-    position: "absolute",
-    width: "100%",
-    height: "100%",
-  },
-  heroBackgroundOverlay: {
-    position: "absolute",
-    width: "100%",
-    height: "100%",
-    opacity: 0.5,
-    backgroundColor: "black",
-  },
-  heroWrapper: {
-    position: "relative",
-  },
-}));
 
 export default Home;
